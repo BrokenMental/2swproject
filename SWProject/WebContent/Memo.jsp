@@ -45,7 +45,7 @@ String now = formatter.format(new java.util.Date());
 						<td><font style="color: white;">></font></td>
 						<td><a href="Memo_Zoom.jsp?number=<%=%>"><font
 								size="4.0" style="color: white;">메모</font></a></td>
-						<td><a href="Memo.jsp"></</a></td>
+						<td><a href="Memo.jsp"></a></td>
 					</tr>
 				</table>
 			</div>

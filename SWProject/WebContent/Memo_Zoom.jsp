@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <%
 	String jdbc_driver = "com.mysql.jdbc.Driver";
 	String jdbc_url = "jdbc:mysql://localhost/swproject?useSSL=false&jdbcCompliantTruncation=false&characterEncoding=utf8&characterSetResults=utf8";
@@ -22,6 +21,15 @@
 			String url = rs.getString(3);
 %>
 <html>
+<script language="javascript">
+	function deleteCheck() {
+		if(confirm("삭제하시겠습니까?")){
+			location.href="Delete_ok.jsp?number=<%=number%>";
+		}else{
+			location.reload();
+		}
+	}
+</script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WebMo</title>
@@ -38,7 +46,7 @@
 					<tr>
 						<td><%@ include file="Route.jsp"%></td>
 						<td><font style="color: black;">></font></td>
-						<td><a href="Memo_List.jsp"><font size="4.0"
+						<td><a href="Memo_List.jsp?today=<%=today%>"><font size="4.0"
 								style="color: black;">리스트</font></a></td>
 						<td><font style="color: black;">></font></td>
 						<td><a href="Memo_Zoom.jsp?number=<%=number%>"><font
@@ -59,7 +67,7 @@
 						<td align="center" width="100px"
 							style="border-right: 1px solid blue;"><font size="5.0"
 							style="color: black">내용</font></td>
-						<td><font size="5.0" style="color: black; margin: 5px"><%=text%></font></td>
+						<td height="250px"><font size="5.0" style="color: black; margin: 5px"><%=text%></font></td>
 					</tr>
 					<tr style="border-bottom: 1px solid gray;">
 						<td align="center" width="100px"
@@ -76,7 +84,8 @@
 					<tr style="border: 0px">
 						<td></td>
 						<td align="right"><input type="submit"
-							style="width: 70pt; height: 50pt; font-size: 25px;" value="수정" />
+							style="width: 70pt; height: 50pt; font-size: 25px;" value="수정" Onclick="location.href='Modify.jsp?number=<%=number%>'"/>
+							<input type="submit" style="width: 70pt; height: 50pt; font-size: 25px;" value="삭제" Onclick="javascript:deleteCheck();"/>
 							<input type="button"
 							style="width: 70pt; height: 50pt; font-size: 25px;" value="취소"
 							onClick="history.back()" /></td>
@@ -89,13 +98,12 @@
 		<div id="right"></div>
 	</div>
 	<%
-		stmt.executeUpdate(sql);
 				rs.close();
 				stmt.close();
 				conn.close();
 			}
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 		}
 	%>
 </body>

@@ -9,28 +9,56 @@
 <link rel="stylesheet" type="text/css" href="style.css?">
 </head>
 <body>
-
 <%
+String todayi = request.getParameter("today");
 Connection conn = null;
 PreparedStatement pstmt = null;
 
 String jdbc_driver = "com.mysql.jdbc.Driver";
 String jdbc_url = "jdbc:mysql://localhost/swproject?useSSL=false&jdbcCompliantTruncation=false&characterEncoding=utf8&characterSetResults=utf8";
 int total = 0;
+int tc = 0;
+int x = 0;
 
 try{
 	Class.forName(jdbc_driver);
 	conn = DriverManager.getConnection(jdbc_url,"root","1234");
 	Statement stmt = conn.createStatement();
-	String sqlCount = "SELECT COUNT(*) FROM MEMO";
-	ResultSet rs = stmt.executeQuery(sqlCount);
-	
-	if(rs.next()){
-		total = rs.getInt(1);
+
+	// today 컬럼의 개수 구하기 시작
+	String sqltc = "select count(distinct today) from memo";
+	ResultSet rs = stmt.executeQuery(sqltc);
+	while(rs.next()){
+		tc = rs.getInt(1);
 	}
 	rs.close();
+	// today 컬럼의 개수 구하기 끝
 	
-	String sqlList = "SELECT number, text, today, url from memo";
+	// 날짜가 서로다른 today칼럼 구하기 시작
+	String sqlResult = "SELECT distinct today FROM MEMO";
+	rs = stmt.executeQuery(sqlResult);
+	String []result = new String[tc];
+	while(rs.next()){
+		result[x] = rs.getString(1);
+		x++;
+	}
+	rs.close();
+	// 날짜가 서로다른 today칼럼 구하기 끝
+	
+	// 특정 today의 개수 구하기 시작
+	String []sqlCount = new String[tc];
+	int []Count =  new int[tc];
+	for(int i = 0; i<tc; i++){
+		sqlCount[i] = "SELECT count(today) FROM memo where today='"+result[i]+"'";
+		rs = stmt.executeQuery(sqlCount[i]);
+		if (rs.next()){
+			Count[i] = rs.getInt(1);
+		}
+	}
+	rs.close();
+	// 특정 today의 개수 구하기 끝
+	
+	String sqlList = "SELECT number, text, today, url from memo where today='"+todayi+"'";
 	rs = stmt.executeQuery(sqlList);
 %>
 	<div id="frame">
@@ -48,23 +76,23 @@ try{
 			</div>
 			<div id="middle_middle_down">
 				<div id="center1">
-				&nbsp; &nbsp; <%out.print("현재 메모 : " + total + "개"); %>
+				<%
+				for(int i =0; i<result.length; i++){
+					if(todayi.equals(result[i])){
+				%>
+				&nbsp; &nbsp; <%out.print("현재 메모 : " + Count[i] + "개"); %>
+				<%
+					}
+				}
+				%>
 				<hr align="center" style="border: solid 1px gray; width: 95%">
 				<%
-				if(total==0){
-				%>
-				<table class="memo_table1">
-				<tr><td style="border:0px" colspan="6">등록된 글이 없습니다.</td>
-				</tr>
-				</table>
-				<%
-				}else{
 					while(rs.next()){
 						int number = rs.getInt(1);
 						String text = rs.getString(2);
 						String today = rs.getString(3);
 						String url = rs.getString(4);
-						%>
+				%>
 				<table class="memo_table2" border= "1px solid #bcbcbc" width= "32%" style="border-collapse: collapse; TABLE-layout:fixed; float:left; position: relative; left: 10px; margin: 2px;">
 					<tr>
 						<th>번호</th><td><a href="Memo_Zoom.jsp?number=<%=number%>"><%=number %></a></td> <!--<td><a href="Memo_Joom.jsp"></a></td> -->
@@ -78,8 +106,7 @@ try{
 					<tr>
 						<th>url</th><td style="text-overflow : ellipsis;overflow : hidden;"><nobr><%=url %></nobr></td>
 					</tr>
-					<%
-					}
+				<%
 				}
 				rs.close();
 				stmt.close();
@@ -98,12 +125,10 @@ try{
 		</div>
 		<div id="right"></div>
 	</div>
-	<%
-	
+<%
 }catch(Exception e){
 	System.out.println(e);
 }
 %>
-
 </body>
 </html>
