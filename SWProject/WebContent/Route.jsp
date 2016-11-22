@@ -8,7 +8,7 @@
 <body>
 <table>
 <tr>
-<td><a href = "Main.jsp"><font size="4.0" style="color:black;">메인</font></a></td>
+<td><font size="4.0" style="color:black;">경로 : </font><a href = "Main.jsp"><font size="4.0" style="color:black;">메인</font></a></td>
 </tr>
 </table>
 </body>

@@ -24,9 +24,9 @@
 			</div>
 			<div id="middle_middle_down">
 				<div id="center1">
-					도움말
-					<hr>
-					도움말 창 입니다.
+					&nbsp; &nbsp;도움말
+					<hr align="center" style="border: solid 1px gray; width: 95%">
+					&nbsp; &nbsp;도움말 창 입니다.
 				</div>
 			</div>
 			<div id="middle_bottom">

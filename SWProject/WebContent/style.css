@@ -1,15 +1,19 @@
 @CHARSET "UTF-8";
 
+#body{
+	background:linear-gradient(#999999,#CCCCCC,#999999,#CCCCCC) fixed;
+}
+
 #frame {
 	width: 1000px;
 	height: 850px;
 	margin: 0px auto;
-	margin-top: 10px;
+	margin-top: 2px;
 	padding: 20px;
 }
 
-#hr { //
-	보류 width: 100px;
+#hr {
+	width: 100px;
 	border-bottom: 0px;
 	text-align: left;
 	margin-left: 0px;
@@ -29,17 +33,17 @@
 
 #middle_top {
 	width: 99%;
-	height: 4.5%;
+	height: 6%;
 	margin: auto;
-	border: 1px solid #bcbcbc;
-	background: #3F3F3F;
+	border-radius:5px;
+	background: #F2DDDE;
 }
 
 #middle_middle_up {
 	width: 99%;
 	height: 3.6%;
 	margin: auto;
-	border: 1px solid #bcbcbc;
+	background: #FFFFFF;
 }
 
 #middle_middle_down {
@@ -51,11 +55,12 @@
 #middle_middle {
 	width: 990px;
 	height: 81.5%;
-	margin-top: 15px;
+	margin-top: 13px;
 	margin-bottom: 15px;
 	position: relative;
+	background:#F7CAC9;
+	border-radius:5px;
 	left: -100px;
-	border: 1px solid #bcbcbc;
 }
 
 #center1 {
@@ -63,11 +68,12 @@
 	height: 95%;
 	margin: auto;
 	margin-top: 15px;
-	border: 1px solid #bcbcbc;
 	position: relative;
 	top: 5px;
 	left: 0.5px;
+	border-radius:5px;
 	overflow-y: scroll;
+	background:#F7CAC9;
 }
 
 #center2 {
@@ -75,18 +81,19 @@
 	height: 95%;
 	margin: auto;
 	margin-top: 15px;
-	border: 1px solid #bcbcbc;
 	position: relative;
 	top: 5px;
 	left: 0.5px;
+	border-radius:5px;
+	background:#F7CAC9;
 }
 
 #middle_bottom {
 	width: 99%;
 	height: 4.6%;
 	margin: auto;
-	border: 1px solid #bcbcbc;
-	background: #3F3F3F;
+	border-radius:5px;
+	background: #F2DDDE;
 }
 
 #right {
@@ -148,26 +155,25 @@ a:hover {
 }
 
 ul#navWrapper {
-	border: 0 black dashed;
+	border: 1 black dashed;
 	margin-left: -39px;
-	margin-top: 9px;
+	margin-top: 12px;
 	float: right;
 }
 
 ul#navWrapper li {
-	border: 0 red dashed;
+	border: 1 red dashed;
 	float: left;
 	list-style: none;
 	margin-right: 0.75em;
 	background-color: #DDD;
 	padding: 0 0.25em;
 	border-radius: 4px;
-	box-shadow: 3px 3px 6px 1px #333;
 	white-space:nowrap;
 }
 
 ul#navWrapper li li {
-	border: 0 blue dashed;
+	border: 1 blue dashed;
 	float: none;
 	margin-left: -44px;
 	margin-top: 3px;

@@ -85,10 +85,10 @@
 					String today = rs.getString(1);
 	%>
 	<center>
-	<table class="Main_table2" border="1px" width="95%" height="50px" style="border-collapse:collapse; margin: 7px; text-align:center;">
+	<table class="Main_table2" border="1px solid" width="95%" height="50px" style="border-color:white; border-collapse:collapse; margin: 7px; text-align:center; background: #F2DDDE;">
 		<tr>
-			<td><%out.print("현재 메모 : " +Count[x] + "개");%></td>
-			<td width="70%"><a href="Memo_List.jsp?today=<%=today%>"><%=today%></a></td>
+			<td width="60%"><a href="Memo_List.jsp?today=<%=today%>"><%=today%></a></td>
+			<td><%out.print("메모 : " +Count[x] + "개");%></td>
 		</tr>
 	</table>
 	</center>

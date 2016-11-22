@@ -14,7 +14,10 @@
           ['일', '개수'],
           ['15일', 11],
           ['16일', 21],
-          ['21일', 1]
+          ['17일', 2],
+          ['18일', 2],
+          ['20일', 2],
+          ['22일', 2]
         ]);
 
         var options = {
@@ -47,8 +50,16 @@
 			</div>
 			<div id="middle_middle_down">
 				<div id="center2">
+				<table>
+					<tr>
+						<td>
+						&nbsp;&nbsp; 통계
+						</td>
+					</tr>
+				</table>
+				<hr align="center" style="border: solid 1px gray; width: 95%">
 					<center>
-					<div id="columnchart_material" style="width: 700px; height: 500px; position:relative; top:80px;">
+					<div id="columnchart_material" style="width: 700px; height: 500px; position:relative; top:20px;">
 					</div>
 					</center>
 				</div>

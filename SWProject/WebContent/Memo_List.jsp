@@ -70,7 +70,7 @@ try{
 					<tr>
 						<td><%@ include file="Route.jsp"%></td>
 						<td><font style="color:black;">></font></td>
-						<td><a href="Memo_List.jsp"><font size="4.0" style="color:black;">리스트</font></a></td>
+						<td><a href="javascript:location.reload();"><font size="4.0" style="color:black;">리스트</font></a></td>
 					</tr>
 				</table>
 			</div>
@@ -80,7 +80,15 @@ try{
 				for(int i =0; i<result.length; i++){
 					if(todayi.equals(result[i])){
 				%>
-				&nbsp; &nbsp; <%out.print("현재 메모 : " + Count[i] + "개"); %>
+				<table>
+					<tr>
+						<td>
+						<font style="color:white;">
+						&nbsp; <%out.print("현재 메모 : " + Count[i] + "개"); %>
+						</font>
+						</td>
+					</tr>
+				</table>
 				<%
 					}
 				}
@@ -93,7 +101,7 @@ try{
 						String today = rs.getString(3);
 						String url = rs.getString(4);
 				%>
-				<table class="memo_table2" border= "1px solid #bcbcbc" width= "32%" style="border-collapse: collapse; TABLE-layout:fixed; float:left; position: relative; left: 10px; margin: 2px;">
+				<table class="memo_table2" border= "1px solid" width= "32%" style="border-color:white; border-collapse: collapse; TABLE-layout:fixed; float:left; position: relative; left: 10px; margin: 2px; background: #F2DDDE;">
 					<tr>
 						<th>번호</th><td><a href="Memo_Zoom.jsp?number=<%=number%>"><%=number %></a></td> <!--<td><a href="Memo_Joom.jsp"></a></td> -->
 					</tr>

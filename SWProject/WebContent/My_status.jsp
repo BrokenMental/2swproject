@@ -24,8 +24,8 @@
 			</div>
 			<div id="middle_middle_down">
 				<div id="center1">
-					내 정보
-					<hr>
+					&nbsp; &nbsp;내 정보
+					<hr align="center" style="border: solid 1px gray; width: 95%">
 					<center>
 					<table>
 						<tr>
