@@ -5,6 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Stats</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['일', '개수'],
+          ['15일', 11],
+          ['16일', 21],
+          ['21일', 1]
+        ]);
+
+        var options = {
+          chart: {
+            title: '일별 그래프 통계자료',
+            subtitle: '2016 : 11월 일별 그래프',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
 </head>
 <body>
 	<div id="frame">
@@ -21,7 +46,11 @@
 				</table>
 			</div>
 			<div id="middle_middle_down">
-				<div id="center1">
+				<div id="center2">
+					<center>
+					<div id="columnchart_material" style="width: 700px; height: 500px; position:relative; top:80px;">
+					</div>
+					</center>
 				</div>
 			</div>
 			<div id="middle_bottom">
