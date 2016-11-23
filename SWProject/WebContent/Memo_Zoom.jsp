@@ -57,25 +57,25 @@
 			<div id="middle_middle">
 				<table align="center" width="90%" height="90%"
 					style="border-collapse: collapse; position: relative; top: 50px; border: 0px solid white;">
-					<tr style="border: 1px solid white;">
+					<tr style="border: 1px solid white; background: #F2DDDE;">
 						<td align="center" width="100px"
 							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black;">번호</font></td>
 						<td><font size="5.0" style="color: black; margin: 5px"><%=number%></font></td>
 					</tr>
-					<tr style="border: 1px solid white;">
+					<tr style="border: 1px solid white; background: #F2DDDE;">
 						<td align="center" width="100px"
 							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black">내용</font></td>
 						<td height="250px"><font size="5.0" style="color: black; margin: 5px"><%=text%></font></td>
 					</tr>
-					<tr style="border: 1px solid white;">
+					<tr style="border: 1px solid white; background: #F2DDDE;">
 						<td align="center" width="100px"
 							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black">날짜</font></td>
 						<td><font size="5.0" style="color: black; margin: 5px"><%=today%></font></td>
 					</tr>
-					<tr style="border: 1px solid white;">
+					<tr style="border: 1px solid white; background: #F2DDDE;">
 						<td align="center" width="100px"
 							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black">url</font></td>
