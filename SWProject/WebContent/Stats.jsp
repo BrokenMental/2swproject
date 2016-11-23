@@ -49,7 +49,7 @@
 				</table>
 			</div>
 			<div id="middle_middle_down">
-				<div id="center2">
+				<div id="center2" style="border:1px solid black; background:#FFFFFF;">
 				<table>
 					<tr>
 						<td>

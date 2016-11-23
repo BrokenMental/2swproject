@@ -55,33 +55,33 @@
 				</table>
 			</div>
 			<div id="middle_middle">
-				<table align="center" width="70%" height="80%"
-					style="border-collapse: collapse; position: relative; top: 80px; border-top: 1px solid gray;">
-					<tr style="border-bottom: 1px solid gray;">
+				<table align="center" width="90%" height="90%"
+					style="border-collapse: collapse; position: relative; top: 50px; border: 0px solid white;">
+					<tr style="border: 1px solid white;">
 						<td align="center" width="100px"
-							style="border-right: 1px solid blue;"><font size="5.0"
+							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black;">번호</font></td>
 						<td><font size="5.0" style="color: black; margin: 5px"><%=number%></font></td>
 					</tr>
-					<tr style="border-bottom: 1px solid gray;">
+					<tr style="border: 1px solid white;">
 						<td align="center" width="100px"
-							style="border-right: 1px solid blue;"><font size="5.0"
+							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black">내용</font></td>
 						<td height="250px"><font size="5.0" style="color: black; margin: 5px"><%=text%></font></td>
 					</tr>
-					<tr style="border-bottom: 1px solid gray;">
+					<tr style="border: 1px solid white;">
 						<td align="center" width="100px"
-							style="border-right: 1px solid blue;"><font size="5.0"
+							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black">날짜</font></td>
 						<td><font size="5.0" style="color: black; margin: 5px"><%=today%></font></td>
 					</tr>
-					<tr style="border-bottom: 1px solid gray;">
+					<tr style="border: 1px solid white;">
 						<td align="center" width="100px"
-							style="border-right: 1px solid blue;"><font size="5.0"
+							style="border-right: 1px solid white;"><font size="5.0"
 							style="color: black">url</font></td>
 						<td><font size="5.0" style="color: black; margin: 5px"><%=url%></font></td>
 					</tr>
-					<tr style="border: 0px">
+					<tr style="border-style:none;">
 						<td></td>
 						<td align="right"><input type="submit"
 							style="width: 70pt; height: 50pt; font-size: 25px;" value="수정" Onclick="location.href='Modify.jsp?number=<%=number%>'"/>
