@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	import="java.sql.*" pageEncoding="UTF-8"%>
+	import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"
+	pageEncoding="UTF-8"%>
 <%@page import="java.util.regex.Pattern"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,44 +22,44 @@
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, "root", "1234");
 			Statement stmt = conn.createStatement();
-			
+
 			// 총 개수 시작
 			String sqlTotal = "SELECT COUNT(*) FROM MEMO";
 			ResultSet rs = stmt.executeQuery(sqlTotal);
-			
-			while(rs.next()){
+
+			while (rs.next()) {
 				total = rs.getInt(1);
 			}
 			rs.close();
 			// 총 개수 끝
-			
+
 			// today 컬럼의 개수 구하기 시작
 			String sqltc = "select count(distinct today) from memo";
 			rs = stmt.executeQuery(sqltc);
-			while(rs.next()){
+			while (rs.next()) {
 				tc = rs.getInt(1);
 			}
 			rs.close();
 			// today 컬럼의 개수 구하기 끝
-			
+
 			// 날짜가 서로다른 today칼럼 구하기 시작
 			String sqlResult = "SELECT distinct today FROM MEMO";
 			rs = stmt.executeQuery(sqlResult);
-			String []result = new String[tc];
-			while(rs.next()){
+			String[] result = new String[tc];
+			while (rs.next()) {
 				result[x] = rs.getString(1);
 				x++;
 			}
 			rs.close();
 			// 날짜가 서로다른 today칼럼 구하기 끝
-			
+
 			// 특정 today의 개수 구하기 시작
-			String []sqlCount = new String[tc];
-			int []Count =  new int[tc];
-			for(int i = 0; i<tc; i++){
-				sqlCount[i] = "SELECT count(today) FROM memo where today='"+result[i]+"'";
+			String[] sqlCount = new String[tc];
+			int[] Count = new int[tc];
+			for (int i = 0; i < tc; i++) {
+				sqlCount[i] = "SELECT count(today) FROM memo where today='" + result[i] + "'";
 				rs = stmt.executeQuery(sqlCount[i]);
-				if (rs.next()){
+				if (rs.next()) {
 					Count[i] = rs.getInt(1);
 				}
 			}
@@ -80,21 +81,40 @@
 	</table>
 	<%
 		} else {
-				x=tc-1;
+				x = tc - 1;
 				while (rs.next()) {
 					String today = rs.getString(1);
+
+					Date date = new Date();
+					SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+					String year = (String) simpleDate.format(date);
+					String ye = today.substring(0, 10);
 	%>
 	<center>
-	<table class="Main_table2" border="1px solid" width="95%" height="50px" style="border-color:white; border-collapse:collapse; margin: 7px; text-align:center; background: #F2DDDE;">
-		<tr>
-			<td width="60%"><a href="Memo_List.jsp?today=<%=today%>"><%=today%></a></td>
-			<td><%out.print("메모 : " +Count[x] + "개");%></td>
-		</tr>
-	</table>
+		<table class="Main_table2" border="1px solid" width="95%"
+			height="50px"
+			style="border-color: white; border-collapse: collapse; margin: 7px; text-align: center; background: #F2DDDE;">
+			<tr>
+				<td width="60%"><a href="Memo_List.jsp?today=<%=today%>"><%=today%></a>
+					<%
+						if (year.equals(ye)) {
+					%>
+							<img src='img/new3.png' />
+					<%
+ 						}
+ 					%>
+ 					</td>
+					<td>
+					<%
+						out.print("메모 : " + Count[x] + "개");
+					%>
+				</td>
+			</tr>
+		</table>
 	</center>
 	<%
-	x--;
-		}
+		x--;
+				}
 			}
 			rs.close();
 			// 날짜가 서로다른 today칼럼 구하기 끝

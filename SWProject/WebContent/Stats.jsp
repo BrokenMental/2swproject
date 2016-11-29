@@ -11,7 +11,7 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['일', '개수'],
+          ['일', '메모 개수'],
           ['15일', 11],
           ['16일', 21],
           ['17일', 2],
@@ -38,13 +38,25 @@
 	<div id="frame">
 		<div id="left"></div>
 		<div id="middle">
-			<div id="middle_top"><%@ include file="Setting_Drop.jsp"%></div>
+			<div id="middle_top">
+			<table width="99%">
+				<tr>
+					<td>
+						<a href="Main.jsp"><img src='img/WebMo.png'/></a>
+					</td>
+					<td align=right>
+						<%@ include file="Setting_Drop.jsp"%>
+					</td>
+				</tr>
+			</table>
+			</div>
 			<div id="middle_middle_up">
-				<table>
+				<table width="99%">
 					<tr>
-						<td><%@ include file="Route.jsp"%></td>
-						<td><font style="color:black;">></font></td>
-						<td><a href="Stats.jsp"><font size="4.0" style="color:black;">통계</font></a></td>
+						<td width="12%"><%@ include file="Route.jsp"%></td>
+						<td width="1%"><font style="color:black;">></font></td>
+						<td width="10%"><a href="Stats.jsp"><font size="4.0" style="color:black;">통계</font></a></td>
+						<td width="70%" align="right"><%@ include file = "Search.jsp" %></td>
 					</tr>
 				</table>
 			</div>
@@ -65,6 +77,13 @@
 				</div>
 			</div>
 			<div id="middle_bottom">
+			<table width="46%">
+				<tr>
+					<td style="float:right;">
+						<%@ include file="New_Memo.jsp" %>
+					</td>
+				</tr>
+			</table>
 			</div>
 		</div>
 		<div id="right"></div>

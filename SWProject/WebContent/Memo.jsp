@@ -77,6 +77,13 @@ String now = formatter.format(new java.util.Date());
 				</div>
 			</div>
 			<div id="middle_bottom">
+			<table width="46%">
+				<tr>
+					<td style="float:right;">
+						<%@ include file="New_Memo.jsp" %>
+					</td>
+				</tr>
+			</table>
 			</div>
 		</div>
 		<div id="right"></div>

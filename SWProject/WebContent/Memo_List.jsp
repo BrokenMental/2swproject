@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -58,19 +58,31 @@ try{
 	rs.close();
 	// 특정 today의 개수 구하기 끝
 	
-	String sqlList = "SELECT number, text, today, url from memo where today='"+todayi+"'";
-	rs = stmt.executeQuery(sqlList);
+	String sqltoday = "SELECT today from memo where today='"+todayi+"'";
+	rs = stmt.executeQuery(sqltoday);
 %>
 	<div id="frame">
 		<div id="left"></div>
 		<div id="middle">
-			<div id="middle_top"><%@ include file="Setting_Drop.jsp"%></div>
+			<div id="middle_top">
+			<table width="99%">
+				<tr>
+					<td>
+						<a href="Main.jsp"><img src='img/WebMo.png'/></a>
+					</td>
+					<td align=right>
+						<%@ include file="Setting_Drop.jsp"%>
+					</td>
+				</tr>
+			</table>
+			</div>
 			<div id="middle_middle_up">
-				<table>
+				<table width="99%">
 					<tr>
-						<td><%@ include file="Route.jsp"%></td>
-						<td><font style="color:black;">></font></td>
+						<td width="95px"><%@ include file="Route.jsp"%></td>
+						<td width="10px"><font style="color:black;">></font></td>
 						<td><a href="javascript:location.reload();"><font size="4.0" style="color:black;">리스트</font></a></td>
+						<td align="right"><%@ include file = "Search.jsp" %></td>
 					</tr>
 				</table>
 			</div>
@@ -79,19 +91,22 @@ try{
 				<%
 				for(int i =0; i<result.length; i++){
 					if(todayi.equals(result[i])){
+						if(rs.next()){
+							String today = rs.getString(1);
 				%>
-				<table>
+				<table width="99%">
 					<tr>
-						<td>
-						<font style="color:white;">
-						&nbsp; <%out.print("현재 메모 : " + Count[i] + "개"); %>
-						</font>
-						</td>
+						<td style="left:10px">&nbsp;<%=today %></td>
+						<td align="right"><font style="color:white;">&nbsp;<%out.print("현재 메모 : " + Count[i] + "개"); %></font>&nbsp;</td>
 					</tr>
 				</table>
 				<%
+						}
+						rs.close();
 					}
 				}
+				String sqlList = "SELECT * from memo where today='"+todayi+"' order by number desc";
+				rs = stmt.executeQuery(sqlList);
 				%>
 				<hr align="center" style="border: solid 1px gray; width: 95%">
 				<%
@@ -100,10 +115,23 @@ try{
 						String text = rs.getString(2);
 						String today = rs.getString(3);
 						String url = rs.getString(4);
+						
+						Date date = new Date();
+						SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+						String year = (String)simpleDate.format(date);
+						String ye = today.substring(0,10);
 				%>
-				<table class="memo_table2" border= "1px solid" width= "32%" style="border-color:white; border-collapse: collapse; TABLE-layout:fixed; float:left; position: relative; left: 10px; margin: 2px; background: #F2DDDE;">
+				<table class="memo_table2" border= "1px solid" width= "32%" onclick="location.href='Memo_Zoom.jsp?number=<%=number%>'"style="border-color:white; border-collapse: collapse; TABLE-layout:fixed; float:left; position: relative; left: 10px; margin: 2px; background: #F2DDDE;">
 					<tr>
-						<th>번호</th><td><a href="Memo_Zoom.jsp?number=<%=number%>"><%=number %></a></td> <!--<td><a href="Memo_Joom.jsp"></a></td> -->
+						<th>번호</th><td><!--<a href="Memo_Zoom.jsp?number=<%=number%>"> </a>--><%=number %>
+						<%
+						if(year.equals(ye)){
+						%>
+							<img src='img/new3.png' />
+						<%
+						}
+						%>
+						</td> <!--<td><a href="Memo_Joom.jsp"></a></td> -->
 					</tr>
 					<tr>
 						<th>메모</th><td style="text-overflow : ellipsis;overflow : hidden;"><nobr><%=text %></nobr></td>
@@ -129,6 +157,13 @@ try{
 				 -->
 			</div>
 			<div id="middle_bottom">
+			<table width="46%">
+				<tr>
+					<td style="float:right;">
+						<%@ include file="New_Memo.jsp" %>
+					</td>
+				</tr>
+			</table>
 			</div>
 		</div>
 		<div id="right"></div>

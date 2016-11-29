@@ -4,6 +4,39 @@
 	background:linear-gradient(#999999,#CCCCCC,#999999,#CCCCCC) fixed;
 }
 
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/NanumGothic-Regular.eot');
+	src: url('fonts/NanumGothic-Regular.eot?#iefix') format('embeded-opentype'),
+	url('fonts/NanumGothic-Regular.woff2') format('woff2'),
+	url('fonts/NanumGothic-Regular.woff') format('woff'),
+	url('fonts/NanumGothic-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 700;
+	src: url('fonts/NanumGothic-Bold.eot');
+	src: url('fonts/NanumGothic-Bold.eot?#iefix') format('embeded-opentype'),
+	url('fonts/NanumGothic-Bold.woff2') format('woff2'),
+	url('fonts/NanumGothic-Bold.woff') format('woff'),
+	url('fonts/NanumGothic-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 800;
+	src: url('fonts/NanumGothic-ExtraBold.eot');
+	src: url('fonts/NanumGothic-ExtraBold.eot?#iefix') format('embeded-opentype'),
+	url('fonts/NanumGothic-ExtraBold.woff2') format('woff2'),
+	url('fonts/NanumGothic-ExtraBold.woff') format('woff'),
+	url('fonts/NanumGothic-ExtraBold.ttf') format('truetype');
+}
+
+body, table, div, p { font-family:'Nanum Gothic';}
+
 #frame {
 	width: 1000px;
 	height: 850px;
@@ -157,8 +190,9 @@ a:hover {
 ul#navWrapper {
 	border: 1 black dashed;
 	margin-left: -39px;
-	margin-top: 12px;
+	margin-top: 10px;
 	float: right;
+	text-align:left;
 }
 
 ul#navWrapper li {
