@@ -66,7 +66,7 @@
 			// 특정 today의 개수 구하기 끝
 
 			// 날짜가 서로다른 today칼럼 구하기 시작 - 위에서 한번 구했었지만, 게시글을 만들기 위해서 다시 구현
-			String sqlToday = "SELECT distinct today FROM MEMO";
+			String sqlToday = "SELECT distinct today FROM MEMO ORDER BY today desc";
 			rs = stmt.executeQuery(sqlToday);
 			// String []result = new String[tc]; //while(rs.next())로 반복하기 때문에 배열이 필요없음.
 	%>
@@ -80,7 +80,7 @@
 	</table>
 	<%
 		} else {
-				x=0;
+				x=tc-1;
 				while (rs.next()) {
 					String today = rs.getString(1);
 	%>
@@ -93,7 +93,7 @@
 	</table>
 	</center>
 	<%
-	x++;
+	x--;
 		}
 			}
 			rs.close();
